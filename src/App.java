@@ -5,7 +5,7 @@ public class App {
         ArrayList<Card> deck = Card.DeckOfCards();
         System.out.println("All Cards in a fresh deck");
         for (Card c : deck) {    
-        System.out.println(c.suit + c.faceValue);
+        System.out.println(c.faceValue + " of "+ c.suit);
         
     }
 }

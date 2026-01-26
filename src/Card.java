@@ -11,39 +11,31 @@ public class Card {
         
     }
     public void setFaceValue(int value){
-        if (value == 14) { this.faceValue = "A";}
-            else if (value == 13) { this.faceValue = "K";}
-            else if (value == 12) { this.faceValue = "Q";}
-            else if (value == 11) { this.faceValue = "J";}
+        if (value == 14) { this.faceValue = "Ace";}
+            else if (value == 13) { this.faceValue = "King";}
+            else if (value == 12) { this.faceValue = "Queen";}
+            else if (value == 11) { this.faceValue = "Jack";}
             else{faceValue = String.valueOf(value);}
             
     }
     
     
     public static ArrayList<Card> DeckOfCards(){
-        ArrayList<Card> DeckOfCards = new ArrayList<>(51);
-        int value = 2;
-        while (value != 15){
-            
-            
-            
-            
-            Card s =  new Card("Spade",value);
-            s.setFaceValue(value);
-            DeckOfCards.add(s);
-            
-            Card h =  new Card("Heart",value);
-            h.setFaceValue(value);
-            DeckOfCards.add(h);
-            
-            Card c =  new Card("Clubs",value);
-            c.setFaceValue(value);
-            DeckOfCards.add(c);
+        ArrayList<Card> DeckOfCards = new ArrayList<>(52);
+        String [] suits = {"Spades","Heart","Diamonds","Clubs"};
 
-            Card d =  new Card("Diamonds",value);
-            d.setFaceValue(value);
-            DeckOfCards.add(d);
-            value = value+1;
+        for (String suit : suits ){
+        
+            
+            for (int value = 2; value <= 14; value++){
+
+                Card card =  new Card(suit,value);
+                card.setFaceValue(value);
+            DeckOfCards.add(card);
+
+            }
+            
+             
         }
 
         return DeckOfCards;
