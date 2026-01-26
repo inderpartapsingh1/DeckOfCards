@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Card {
     String suit ;
@@ -7,6 +8,7 @@ public class Card {
     public  Card(String suit,int value){
         this.suit = suit;
         this.value = value;
+        setFaceValue(value);
         
         
     }
@@ -21,7 +23,7 @@ public class Card {
     
     
     public static ArrayList<Card> DeckOfCards(){
-        ArrayList<Card> DeckOfCards = new ArrayList<>(52);
+        ArrayList<Card> Deck = new ArrayList<>(52);
         String [] suits = {"Spades","Heart","Diamonds","Clubs"};
 
         for (String suit : suits ){
@@ -30,15 +32,31 @@ public class Card {
             for (int value = 2; value <= 14; value++){
 
                 Card card =  new Card(suit,value);
-                card.setFaceValue(value);
-            DeckOfCards.add(card);
+            Deck.add(card);
 
             }
             
              
         }
 
-        return DeckOfCards;
+        return Deck;
+    }
+
+
+    public static ArrayList<Card> shuffle(){
+        ArrayList<Card> deck = Card.DeckOfCards();
+        Random random = new Random();
+
+        for (int i=  deck.size() -1; i > 0 ;i --) {   
+
+            int j = random.nextInt(i + 1); 
+            
+            Card temp = deck.get(i) ;
+            deck.set( i, deck.get(j) ); 
+            deck.set( j , temp);
+
+        }  
+        return deck;
     }
 
 }
